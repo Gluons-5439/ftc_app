@@ -23,39 +23,35 @@ public class AManualD extends LinearOpMode {
     }
 
     public void control() throws java.lang.InterruptedException {
-        boolean shootTog = false, spinTog = false;
+        boolean  spinTog = false;
 
         double left = Range.clip(gamepad1.left_stick_y, -1.0, 1.0);
         double right = Range.clip(gamepad1.right_stick_y, -1.0, 1.0);
 
-        if (left <= .025 && right <= .025)
-            dPad();
+        if(gamepad1.left_bumper){
+            throw new NullPointerException();
+        }
+
+        if (left < .1 && right < .1)
+            if (gamepad1.dpad_up) motorPow(0.5,0.5);
+            else if (gamepad1.dpad_down) motorPow(-0.5,-0.5);
+            else motorPow(0,0);
         else {
             motorPow(-left, -right);
         }
 
-        if(gamepad1.b) spinTog = spinTog ? false:true;
+        if(gamepad1.right_bumper || gamepad2.right_bumper) spinTog = spinTog ? false:true;
         robot.cannonMotor.setPower(spinTog ? 1:0);
 
-        if(gamepad1.right_bumper) shootTog = shootTog ? false:true;
-        robot.cannonMotor.setPower(shootTog ? 1:0);
 
-
-
-        if (gamepad1.right_trigger > 0)
+        if (gamepad1.right_trigger > 0 || gamepad2.right_trigger > 0)
             robot.lift.setPower(1.0);
-        else if (gamepad1.left_trigger > 0)
+        else if (gamepad1.left_trigger > 0 || gamepad2.left_trigger > 0)
             robot.lift.setPower(-1.0);
         else
             robot.lift.setPower(0);
 
         robot.waitForTick(40);
-    }
-
-    private void dPad() {
-        if (gamepad1.dpad_up) motorPow(0.5,0.5);
-        else if (gamepad1.dpad_down) motorPow(-0.5,-0.5);
-        else motorPow(0,0);
     }
 
     private void motorPow(double left, double right) {
