@@ -32,13 +32,8 @@ public class AManualD extends LinearOpMode {
             throw new NullPointerException();
         }
 
-        if (left < .1 && right < .1)
-            if (gamepad1.dpad_up) motorPow(0.5,0.5);
-            else if (gamepad1.dpad_down) motorPow(-0.5,-0.5);
-            else motorPow(0,0);
-        else {
-            motorPow(-left, -right);
-        }
+        motorPow(left, right);
+
 
         if(gamepad1.right_bumper || gamepad2.right_bumper) spinTog = spinTog ? false:true;
         robot.cannonMotor.setPower(spinTog ? 1:0);
