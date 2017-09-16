@@ -57,7 +57,7 @@ public class AManualD extends LinearOpMode {
         if (leftStickVert <= .025 && rightStickVert <= .025)
             dPad();
         else {
-            motorPow(leftStickVert, rightStickVert);
+            motorPow(-leftStickVert, -rightStickVert);
         }
     }
 
@@ -173,7 +173,7 @@ public class AManualD extends LinearOpMode {
         }
 
         if (shootTog) {
-            robot.cannonMotor.setPower(.35);
+            robot.cannonMotor.setPower(1);
         } else
             robot.cannonMotor.setPower(0);
     }
