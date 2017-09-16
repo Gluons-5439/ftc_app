@@ -23,8 +23,6 @@ public class AManualD extends LinearOpMode {
     }
 
     public void control() throws java.lang.InterruptedException {
-        boolean  spinTog = false;
-
         double left = Range.clip(gamepad1.left_stick_y, -1.0, 1.0);
         double right = Range.clip(gamepad1.right_stick_y, -1.0, 1.0);
 
@@ -34,10 +32,8 @@ public class AManualD extends LinearOpMode {
 
         motorPow(left, right);
 
-
-        if(gamepad1.right_bumper || gamepad2.right_bumper) spinTog = spinTog ? false:true;
-        robot.cannonMotor.setPower(spinTog ? 1:0);
-
+        if(gamepad1.right_bumper || gamepad2.right_bumper) robot.cannonMotor.setPower(1);
+        else robot.cannonMotor.setPower(0);
 
         if (gamepad1.right_trigger > 0 || gamepad2.right_trigger > 0)
             robot.lift.setPower(1.0);
