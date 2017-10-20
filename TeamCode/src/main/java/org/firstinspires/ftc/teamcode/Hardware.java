@@ -18,8 +18,8 @@ public class Hardware{
     DcMotor frontRightMotor = null;
     DcMotor backLeftMotor = null;
     DcMotor backRightMotor = null;
-    DcMotor cannonMotor = null;
-    DcMotor lift = null;
+//    DcMotor cannonMotor = null;
+//    DcMotor lift = null;
 
    // ColorSensor beaconSensor = null;
     //ModernRoboticsI2cGyro gyro = null;
@@ -75,7 +75,7 @@ public class Hardware{
 
        // InitSensors();
 
-        cannonMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+//        cannonMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
     }
 
     private void SetMotorInitMode() {
@@ -83,8 +83,8 @@ public class Hardware{
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        cannonMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        lift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        cannonMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        lift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     private void SetMotorsInitPower() {
@@ -92,8 +92,8 @@ public class Hardware{
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
         backLeftMotor.setPower(0);
-        cannonMotor.setPower(0);
-        lift.setPower(0);
+//        cannonMotor.setPower(0);
+//        lift.setPower(0);
     }
 
     private void InitMotorsDirection() {
@@ -101,8 +101,8 @@ public class Hardware{
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        cannonMotor.setDirection(DcMotor.Direction.FORWARD);
-        lift.setDirection(DcMotor.Direction.REVERSE);
+//        cannonMotor.setDirection(DcMotor.Direction.FORWARD);
+//        lift.setDirection(DcMotor.Direction.REVERSE);
     }
 
     private void GetMotors() {
@@ -110,8 +110,8 @@ public class Hardware{
         frontRightMotor = hwMap.dcMotor.get("frontRightMotor");
         backLeftMotor = hwMap.dcMotor.get("backLeftMotor");
         backRightMotor = hwMap.dcMotor.get("backRightMotor");
-        cannonMotor = hwMap.dcMotor.get("cannonMotor");
-        lift = hwMap.dcMotor.get("lift");
+//        cannonMotor = hwMap.dcMotor.get("cannonMotor");
+//        lift = hwMap.dcMotor.get("lift");
     }
 
     public void waitForTick(long periodMs) throws InterruptedException {

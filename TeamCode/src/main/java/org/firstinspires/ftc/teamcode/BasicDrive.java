@@ -4,9 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name = "MecanumDrive", group = "TeleOp")
+@TeleOp(name = "Basic(White girl) Drive", group = "TeleOp")
 
-public class mecanumDrive extends LinearOpMode {
+public class BasicDrive extends LinearOpMode {
     Hardware robot = new Hardware();
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
