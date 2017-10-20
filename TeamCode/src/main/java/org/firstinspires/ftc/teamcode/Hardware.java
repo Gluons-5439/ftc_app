@@ -98,9 +98,9 @@ public class Hardware{
 
     private void InitMotorsDirection() {
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        frontRightMotor.setDirection(DcMotor.Direction.REVERSE); // reversed
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        backRightMotor.setDirection(DcMotor.Direction.REVERSE);
 //        cannonMotor.setDirection(DcMotor.Direction.FORWARD);
 //        lift.setDirection(DcMotor.Direction.REVERSE);
     }

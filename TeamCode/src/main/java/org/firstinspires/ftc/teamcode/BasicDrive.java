@@ -12,9 +12,11 @@ public class BasicDrive extends LinearOpMode {
         robot.init(hardwareMap);
         waitForStart();
         while (opModeIsActive()) {
-            float forward = -gamepad1.left_stick_y;
-            float right = gamepad1.left_stick_x;
-            float clockwise = gamepad1.right_stick_x;
+            float forward = Math.abs(gamepad1.left_stick_y)>0.1 ? -gamepad1.left_stick_y:0;
+            float right = Math.abs(gamepad1.left_stick_x)>0.1 ? gamepad1.left_stick_x:0;
+            float clockwise = Math.abs(gamepad1.right_stick_x)>0.1 ? gamepad1.right_stick_x:0;
+
+            clockwise *= 0.1;
 
             robot.frontLeftMotor.setPower(Range.clip(forward+clockwise+right,-1,1));
             robot.backLeftMotor.setPower(Range.clip(forward-clockwise-right,-1,1));
