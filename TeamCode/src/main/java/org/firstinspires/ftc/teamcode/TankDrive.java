@@ -19,11 +19,13 @@ public class TankDrive extends LinearOpMode{
             // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
             left = -gamepad1.left_stick_y;
             right = -gamepad1.right_stick_y;
+            //Will be used as motor power, input from gamepad stick
 
-            robot.frontLeftMotor.setPower(left);
-            robot.backLeftMotor.setPower(-left);
+            robot.frontLeftMotor.setPower(-left);
+            robot.backLeftMotor.setPower(left);
             robot.frontRightMotor.setPower(right);
             robot.backRightMotor.setPower(-right);
+            //Positives and negatives may still be messed up
         }
     }
 }
