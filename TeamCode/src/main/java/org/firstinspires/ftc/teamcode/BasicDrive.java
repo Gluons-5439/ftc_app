@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
@@ -8,9 +9,10 @@ import com.qualcomm.robotcore.util.Range;
 
 public class BasicDrive extends LinearOpMode {
     Hardware robot = new Hardware();
+    ModernRoboticsI2cGyro gyro = null;
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        gyro
+        gyro = (ModernRoboticsI2cGyro)hwMap.gyroSensor.get("Gyro");
         waitForStart();
         while (opModeIsActive()) {
             double right = Math.abs(gamepad1.left_stick_y)>0.1 ? -gamepad1.left_stick_y:0;

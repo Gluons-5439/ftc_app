@@ -24,8 +24,7 @@ public class Hardware{
 //    DcMotor cannonMotor = null;
 //    DcMotor lift = null;
 
-   // ColorSensor beaconSensor = null;
-    ModernRoboticsI2cGyro gyro = null;
+    // ColorSensor beaconSensor = null;
 
     VuforiaLocalizer vuforia = null;
     VuforiaTrackables ciphers = null;
@@ -74,7 +73,6 @@ public class Hardware{
 
         SetMotorInitMode();
 
-        gyro = (ModernRoboticsI2cGyro)hwMap.gyroSensor.get("Gyro");
 
 //        cannonMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
     }
