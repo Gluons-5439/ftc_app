@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.view.Display;
+
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -23,7 +25,7 @@ public class Hardware{
 //    DcMotor lift = null;
 
    // ColorSensor beaconSensor = null;
-    //ModernRoboticsI2cGyro gyro = null;
+    ModernRoboticsI2cGyro gyro = null;
 
     VuforiaLocalizer vuforia = null;
     VuforiaTrackables ciphers = null;
@@ -72,7 +74,7 @@ public class Hardware{
 
         SetMotorInitMode();
 
-       // InitSensors();
+        gyro = (ModernRoboticsI2cGyro)hwMap.gyroSensor.get("Gyro");
 
 //        cannonMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
     }
