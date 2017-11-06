@@ -42,6 +42,17 @@ public class BasicDrive extends LinearOpMode {
             robot.backRightMotor.setPower(Range.clip(forward-clockwise+right,-1,1));
             //Three linear variables intersecting non-linearly
 
+            float padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.1 ? -gamepad2.left_stick_y : 0;
+            //Deadzone for lift motors
+            if (Math.abs(padTwoLeftY) > 0) {
+                robot.liftMotorLeft.setPower(padTwoLeftY);
+                robot.liftMotorRight.setPower(padTwoLeftY);
+            } else {
+                robot.liftMotorLeft.setPower(0);
+                robot.liftMotorRight.setPower(0);
+            }
+            //Sets power for motors raising and lowering pulley equal to gamepad2 left stick
+
             telemetry.addData("Heading of Gyro:", theta);
 
             robot.waitForTick(40);
