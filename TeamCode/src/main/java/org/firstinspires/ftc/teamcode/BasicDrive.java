@@ -22,15 +22,20 @@ public class BasicDrive extends LinearOpMode {
 
         waitForStart();
 
+        gyro.resetZAxisIntegrator();
+
+
         while (opModeIsActive()) {
             double theta = gyro.getHeading();
+
+
             double right = Math.abs(gamepad1.left_stick_y)>0.1 ? -gamepad1.left_stick_y:0;
             double forward = Math.abs(gamepad1.left_stick_x)>0.1 ? gamepad1.left_stick_x:0;
             double clockwise = Math.abs(gamepad1.right_stick_x)>0.1 ? gamepad1.right_stick_x:0;
             //Variables to set values based on controller input, 0.1 is deadzone
 
-            double temp = forward*Math.cos(Math.toRadians(theta)) + right*Math.sin(Math.toRadians(theta));
-            right = -forward*Math.sin(theta) + right*Math.cos((theta));
+            double temp = forward*Math.cos(Math.toRadians(theta)) - right*Math.sin(Math.toRadians(theta));
+            right = forward*Math.sin(theta) + right*Math.cos((theta));
             forward = temp;
 
             clockwise *= -0.5;
@@ -42,18 +47,16 @@ public class BasicDrive extends LinearOpMode {
             robot.backRightMotor.setPower(Range.clip(forward-clockwise+right,-1,1));
             //Three linear variables intersecting non-linearly
 
-            float padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.1 ? -gamepad2.left_stick_y : 0;
+            float padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
             //Deadzone for lift motors
-            if (Math.abs(padTwoLeftY) > 0) {
-                robot.liftMotorLeft.setPower(padTwoLeftY);
-                robot.liftMotorRight.setPower(padTwoLeftY);
-            } else {
-                robot.liftMotorLeft.setPower(0);
-                robot.liftMotorRight.setPower(0);
-            }
+            robot.liftMotorLeft.setPower(padTwoLeftY);
+            robot.liftMotorRight.setPower(padTwoLeftY);
             //Sets power for motors raising and lowering pulley equal to gamepad2 left stick
 
+
+            //Adds gyro heading to gyros gyro headings telemetry gyro telemetry heading
             telemetry.addData("Heading of Gyro:", theta);
+            telemetry.update();
 
             robot.waitForTick(40);
             //Stops phone from queuing too many commands and breaking
