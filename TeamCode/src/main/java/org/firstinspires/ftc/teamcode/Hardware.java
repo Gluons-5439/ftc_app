@@ -24,8 +24,6 @@ public class Hardware{
     DcMotor liftMotorLeft = null;
     DcMotor liftMotorRight = null;
 
-    // ColorSensor beaconSensor = null;
-
     VuforiaLocalizer vuforia = null;
     VuforiaTrackables ciphers = null;
 
@@ -35,16 +33,15 @@ public class Hardware{
     static final double wheelCircumferencemm = 159.5929;
 
 
-
-
     public Hardware() {
     }
+
 
     public void init(HardwareMap ahwMap) throws InterruptedException{
         hwMap = ahwMap;
 
         InitComponents();
-//        InitVuforia();
+        //InitVuforia();
     }
 
 
@@ -59,9 +56,8 @@ public class Hardware{
         ciphers = vuforia.loadTrackablesFromAsset("RelicVuMark");
 
         ciphers.get(0).setName("RelicRecovery");
-
-
     }
+
 
     private void InitComponents() {
 
@@ -72,19 +68,18 @@ public class Hardware{
         SetMotorsInitPower();
 
         SetMotorInitMode();
-
-
-//        cannonMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
     }
+
 
     private void SetMotorInitMode() {
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        liftMotorLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        liftMotorRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        liftMotorLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        liftMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
+
 
     private void SetMotorsInitPower() {
         frontLeftMotor.setPower(0);
@@ -95,6 +90,7 @@ public class Hardware{
         liftMotorRight.setPower(0);
     }
 
+
     private void InitMotorsDirection() {
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         frontRightMotor.setDirection(DcMotor.Direction.REVERSE); // reversed
@@ -104,6 +100,7 @@ public class Hardware{
         liftMotorRight.setDirection(DcMotor.Direction.FORWARD);
     }
 
+
     private void GetMotors() {
         frontLeftMotor = hwMap.dcMotor.get("frontLeftMotor");
         frontRightMotor = hwMap.dcMotor.get("frontRightMotor");
@@ -112,6 +109,7 @@ public class Hardware{
         liftMotorLeft = hwMap.dcMotor.get("liftMotorLeft");
         liftMotorRight = hwMap.dcMotor.get("liftMotorRight");
     }
+
 
     public void waitForTick(long periodMs) throws InterruptedException {
 
