@@ -9,16 +9,21 @@ import com.qualcomm.robotcore.util.Range;
 
 public class BasicDrive extends LinearOpMode {
     Hardware robot = new Hardware();
+    //Creates robot object
     ModernRoboticsI2cGyro gyro = null;
+    //Declares gyro
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
+        //Upon initialization maps robot hardware
 
         gyro = hardwareMap.get(ModernRoboticsI2cGyro.class, "gyro");
         gyro.calibrate();
+        //Maps and calibrates gyro heading during initialization
         while (!isStopRequested() && gyro.isCalibrating()) {
             sleep(50);
             idle();
         }
+        //Makes sure initialization runs long enough for gyro to finish calibration
 
         waitForStart();
 
@@ -27,6 +32,7 @@ public class BasicDrive extends LinearOpMode {
 
         while (opModeIsActive()) {
             double theta = gyro.getHeading();
+            //Creates variable theta which equals robot heading
 
             //failsafe: switch forward and right
             double forward = Math.abs(gamepad1.left_stick_y)>0.1 ? -gamepad1.left_stick_y:0;
@@ -37,6 +43,7 @@ public class BasicDrive extends LinearOpMode {
             double temp = forward*Math.cos(Math.toRadians(theta)) - right*Math.sin(Math.toRadians(theta));
             right = forward*Math.sin(theta) + right*Math.cos((theta));
             forward = temp;
+            //Math for drive relative to theta
 
             clockwise *= -0.5;
             //Still screwy
@@ -45,7 +52,7 @@ public class BasicDrive extends LinearOpMode {
             robot.backLeftMotor.setPower(Range.clip(forward+clockwise-right,-1,1));
             robot.frontRightMotor.setPower(Range.clip(forward-clockwise-right,-1,1));
             robot.backRightMotor.setPower(Range.clip(forward-clockwise+right,-1,1));
-            //Three linear variables intersecting non-linearly
+            //Three linear variables intersecting non-linearly for mecanum drive
 
             float padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
             //Deadzone for lift motors
@@ -55,7 +62,7 @@ public class BasicDrive extends LinearOpMode {
 
             telemetry.addData("Heading of Gyro:", theta);
             telemetry.update();
-            //Adds gyro heading to gyros gyro headings telemetry gyro telemetry heading
+            //Adds gyro heading to telemetry
 
             robot.waitForTick(40);
             //Stops phone from queuing too many commands and breaking
