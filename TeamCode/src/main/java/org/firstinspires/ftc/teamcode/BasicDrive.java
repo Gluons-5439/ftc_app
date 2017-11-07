@@ -28,7 +28,7 @@ public class BasicDrive extends LinearOpMode {
         while (opModeIsActive()) {
             double theta = gyro.getHeading();
 
-//failsafe: switch forward and right
+            //failsafe: switch forward and right
             double forward = Math.abs(gamepad1.left_stick_y)>0.1 ? -gamepad1.left_stick_y:0;
             double right = Math.abs(gamepad1.left_stick_x)>0.1 ? gamepad1.left_stick_x:0;
             double clockwise = Math.abs(gamepad1.right_stick_x)>0.1 ? gamepad1.right_stick_x:0;
