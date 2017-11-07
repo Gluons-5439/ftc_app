@@ -46,7 +46,7 @@ public class BasicDrive extends LinearOpMode {
             //Math for drive relative to theta
 
             clockwise *= -0.5;
-            //Still screwy, sets speed when rotating
+            //Sets speed when rotating, still needs work
 
             robot.frontLeftMotor.setPower(Range.clip(forward+clockwise+right,-1,1));
             robot.backLeftMotor.setPower(Range.clip(forward+clockwise-right,-1,1));
