@@ -53,10 +53,9 @@ public class BasicDrive extends LinearOpMode {
             robot.liftMotorRight.setPower(padTwoLeftY);
             //Sets power for motors raising and lowering pulley equal to gamepad2 left stick
 
-
-            //Adds gyro heading to gyros gyro headings telemetry gyro telemetry heading
             telemetry.addData("Heading of Gyro:", theta);
             telemetry.update();
+            //Adds gyro heading to gyros gyro headings telemetry gyro telemetry heading
 
             robot.waitForTick(40);
             //Stops phone from queuing too many commands and breaking
