@@ -3,11 +3,10 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.*;
 import com.qualcomm.robotcore.hardware.*;
 import com.qualcomm.hardware.modernrobotics.*;
-import com.qualcomm.robotcore.eventloop.opmode.*;
 import com.qualcomm.robotcore.util.*;
 
 
-@Autonomous(name = "CompetitionAuto", group = "Autonomous")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "CompetitionAuto", group = "Autonomous")
 
 
 public class Autonomous extends LinearOpMode {
@@ -23,34 +22,34 @@ public class Autonomous extends LinearOpMode {
 
     public void goForward() {
 
-        frontLeftMotor.setPower(1);
-        frontRightMotor.setPower(1);
-        backLeftMotor.setPower(1);
-        backRightMotor.setPower(1);
+        robot.frontLeftMotor.setPower(1);
+        robot.frontRightMotor.setPower(1);
+        robot.backLeftMotor.setPower(1);
+        robot.backRightMotor.setPower(1);
     }
 
     public void goBackward() {
 
-        frontLeftMotor.setPower(-1);
-        frontRightMotor.setPower(-1);
-        backLeftMotor.setPower(-1);
-        backRightMotor.setPower(-1);
+        robot.frontLeftMotor.setPower(-1);
+        robot.frontRightMotor.setPower(-1);
+        robot.backLeftMotor.setPower(-1);
+        robot.backRightMotor.setPower(-1);
 
     }
 
     public void goRight() {
-        frontLeftMotor.setPower(-1);
-        frontRightMotor.setPower(1);
-        backLeftMotor.setPower(-1);
-        backRightMotor.setPower(1);
+        robot.frontLeftMotor.setPower(-1);
+        robot.frontRightMotor.setPower(1);
+        robot.backLeftMotor.setPower(-1);
+        robot.backRightMotor.setPower(1);
 
     }
 
     public void goLeft() {
-        frontLeftMotor.setPower(1);
-        frontRightMotor.setPower(-1);
-        backLeftMotor.setPower(1);
-        backRightMotor.setPower(-1);
+        robot.frontLeftMotor.setPower(1);
+        robot.frontRightMotor.setPower(-1);
+        robot.backLeftMotor.setPower(1);
+        robot.backRightMotor.setPower(-1);
 
     }
 
