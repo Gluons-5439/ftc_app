@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import android.view.Display;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -23,9 +24,16 @@ public class Hardware{
     DcMotor backRightMotor = null;
     DcMotor liftMotorLeft = null;
     DcMotor liftMotorRight = null;
+    DcMotor initialPulleyRaiser = null;
 
-    VuforiaLocalizer vuforia = null;
-    VuforiaTrackables ciphers = null;
+    Servo leftLift = null;
+    Servo rightLift = null;
+    Servo bottomClaw = null;
+    Servo topClaw = null;
+    Servo jewelExtend = null;
+    Servo clawRaiser = null;
+
+
 
     HardwareMap hwMap = null;
     private ElapsedTime period = new ElapsedTime();
@@ -45,18 +53,7 @@ public class Hardware{
     }
 
 
-    private void InitVuforia() {
-        VuforiaLocalizer.Parameters params = new VuforiaLocalizer.Parameters(R.id.cameraMonitorViewId);
-        params.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-        params.vuforiaLicenseKey = "AfmBbcz/////AAAAGbLGg++zzk4MiOrcPTc3t9xQj3QHfISJprebOgt5JJ4+83xtFO+ApGlI3GVY/aMgCpoGEIzaJse9sXiYDiLYpJQlGDX765tWJUrqM+pzqLxVXjWA1J6c968/YqYq74Vq5emNxGHj5SF3HP3m43Iq/YYgkSdMv4BR+RThPPnIIzrbAjEAHHtMgH7vVh036+bcw9UqBfSdD/IBqrKpJLERn5+Qi/4Q4EoReCC0CTDfZ+LcY0rUur0QZRkMpxx/9s4eCgIU+qfOcSlBvjoX7QAQ2MImUME1y5yJiyaWueamnhRBOwERGBuDKyGp4eBWp4i3esJcplrWYovjzPg9fL7Thy8v9KnrHy22PUFAYY+1vjKp";
-        params.cameraMonitorFeedback = VuforiaLocalizer.Parameters.CameraMonitorFeedback.AXES;
-        vuforia = ClassFactory.createVuforiaLocalizer(params);
-        Vuforia.setHint(HINT.HINT_MAX_SIMULTANEOUS_IMAGE_TARGETS, 1);
 
-        ciphers = vuforia.loadTrackablesFromAsset("RelicVuMark");
-
-        ciphers.get(0).setName("RelicRecovery");
-    }
 
 
     private void InitComponents() {
@@ -78,6 +75,9 @@ public class Hardware{
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         liftMotorLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         liftMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        initialPulleyRaiser.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+
     }
 
 
@@ -88,6 +88,14 @@ public class Hardware{
         backLeftMotor.setPower(0);
         liftMotorLeft.setPower(0);
         liftMotorRight.setPower(0);
+        initialPulleyRaiser.setPower(0);
+
+        leftLift.setPosition(0);
+        rightLift.setPosition(0);
+        bottomClaw.setPosition(0);
+        topClaw.setPosition(0);
+        jewelExtend.setPosition(0);
+        clawRaiser.setPosition(0);
     }
 
 
@@ -98,6 +106,8 @@ public class Hardware{
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotorLeft.setDirection(DcMotor.Direction.FORWARD);
         liftMotorRight.setDirection(DcMotor.Direction.FORWARD);
+        initialPulleyRaiser.setDirection(DcMotor.Direction.FORWARD);
+
     }
 
 
@@ -108,6 +118,14 @@ public class Hardware{
         backRightMotor = hwMap.dcMotor.get("backRightMotor");
         liftMotorLeft = hwMap.dcMotor.get("liftMotorLeft");
         liftMotorRight = hwMap.dcMotor.get("liftMotorRight");
+        initialPulleyRaiser = hwMap.dcMotor.get("initialPulleyRaiser");
+
+        leftLift = hwMap.servo.get("leftLift");
+        rightLift = hwMap.servo.get("rightLift");
+        bottomClaw = hwMap.servo.get("bottomClaw");
+        topClaw = hwMap.servo.get("topClaw");
+        jewelExtend = hwMap.servo.get("jewelExtend");
+        clawRaiser = hwMap.servo.get("clawRaiser");
     }
 
 

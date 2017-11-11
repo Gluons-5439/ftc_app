@@ -54,6 +54,57 @@ public class BasicDrive extends LinearOpMode {
             robot.backRightMotor.setPower(Range.clip(forward-clockwise+right,-1,1));
             //Three linear variables intersecting non-linearly for mecanum drive
 
+
+            while(gamepad2.x)  {
+                robot.bottomClaw.setPosition(1);
+            }
+            while(gamepad2.y)   {
+                robot.bottomClaw.setPosition(-1);
+            }
+            while(gamepad2.b)  {
+                robot.topClaw.setPosition(1);
+            }
+            while(gamepad2.a)   {
+                robot.topClaw.setPosition(-1);
+            }
+            //preset positions for servo go up and down
+            /**      int servoPosition = 0;
+             if(gamepad1.a)
+             {
+             servoPosition++;
+             }
+             if(gamepad1.b)
+             {
+             servoPosition--;
+             }
+             switch(servoPosition)
+             {
+             case 0:
+             robot.leftLift.setPosition(0);
+             robot.rightLift.setPosition(0);
+             break;
+             case 1:
+             robot.leftLift.setPosition(.25);
+             robot.rightLift.setPosition(.25);
+             break;
+             case 2:
+             robot.leftLift.setPosition(.5);
+             robot.rightLift.setPosition(.5);
+             break;
+             case 3:
+             robot.leftLift.setPosition(.75);
+             robot.rightLift.setPosition(.75);
+             break;
+             case 4:
+             robot.leftLift.setPosition(1);
+             robot.rightLift.setPosition(1);
+             break;
+             default:
+             telemetry.addData("Servo can't go that high/low! Take the L");
+             telemetry.update();
+
+             }
+             **/
             float padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
             //Deadzone for lift motors
             robot.liftMotorLeft.setPower(padTwoLeftY);
