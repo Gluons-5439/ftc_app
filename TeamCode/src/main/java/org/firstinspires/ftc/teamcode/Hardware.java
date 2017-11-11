@@ -49,26 +49,37 @@ public class Hardware{
         hwMap = ahwMap;
 
         InitComponents();
-        //InitVuforia();
     }
-
-
-
-
 
     private void InitComponents() {
 
-        GetMotors();
+        initDevices();
 
-        InitMotorsDirection();
 
-        SetMotorsInitPower();
+        initMotorSettings();
 
-        SetMotorInitMode();
+        initDefaultPosition();
+    }
+
+    private void initDevices() {
+        frontLeftMotor = hwMap.dcMotor.get("frontLeftMotor");
+        frontRightMotor = hwMap.dcMotor.get("frontRightMotor");
+        backLeftMotor = hwMap.dcMotor.get("backLeftMotor");
+        backRightMotor = hwMap.dcMotor.get("backRightMotor");
+        liftMotorLeft = hwMap.dcMotor.get("liftMotorLeft");
+        liftMotorRight = hwMap.dcMotor.get("liftMotorRight");
+        initialPulleyRaiser = hwMap.dcMotor.get("initialPulleyRaiser");
+
+        leftLift = hwMap.servo.get("leftLift");
+        rightLift = hwMap.servo.get("rightLift");
+        bottomClaw = hwMap.servo.get("bottomClaw");
+        topClaw = hwMap.servo.get("topClaw");
+        jewelExtend = hwMap.servo.get("jewelExtend");
+        clawRaiser = hwMap.servo.get("clawRaiser");
     }
 
 
-    private void SetMotorInitMode() {
+    private void initMotorSettings() {
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -77,11 +88,17 @@ public class Hardware{
         liftMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         initialPulleyRaiser.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-
+        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontRightMotor.setDirection(DcMotor.Direction.REVERSE); // reversed
+        backLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        backRightMotor.setDirection(DcMotor.Direction.FORWARD);
+        liftMotorLeft.setDirection(DcMotor.Direction.FORWARD);
+        liftMotorRight.setDirection(DcMotor.Direction.FORWARD);
+        initialPulleyRaiser.setDirection(DcMotor.Direction.FORWARD);
     }
 
 
-    private void SetMotorsInitPower() {
+    private void initDefaultPosition() {
         frontLeftMotor.setPower(0);
         frontRightMotor.setPower(0);
         backRightMotor.setPower(0);
@@ -99,34 +116,10 @@ public class Hardware{
     }
 
 
-    private void InitMotorsDirection() {
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotor.Direction.REVERSE); // reversed
-        backLeftMotor.setDirection(DcMotor.Direction.FORWARD);
-        backRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        liftMotorLeft.setDirection(DcMotor.Direction.FORWARD);
-        liftMotorRight.setDirection(DcMotor.Direction.FORWARD);
-        initialPulleyRaiser.setDirection(DcMotor.Direction.FORWARD);
-
-    }
 
 
-    private void GetMotors() {
-        frontLeftMotor = hwMap.dcMotor.get("frontLeftMotor");
-        frontRightMotor = hwMap.dcMotor.get("frontRightMotor");
-        backLeftMotor = hwMap.dcMotor.get("backLeftMotor");
-        backRightMotor = hwMap.dcMotor.get("backRightMotor");
-        liftMotorLeft = hwMap.dcMotor.get("liftMotorLeft");
-        liftMotorRight = hwMap.dcMotor.get("liftMotorRight");
-        initialPulleyRaiser = hwMap.dcMotor.get("initialPulleyRaiser");
 
-        leftLift = hwMap.servo.get("leftLift");
-        rightLift = hwMap.servo.get("rightLift");
-        bottomClaw = hwMap.servo.get("bottomClaw");
-        topClaw = hwMap.servo.get("topClaw");
-        jewelExtend = hwMap.servo.get("jewelExtend");
-        clawRaiser = hwMap.servo.get("clawRaiser");
-    }
+
 
 
     public void waitForTick(long periodMs) throws InterruptedException {

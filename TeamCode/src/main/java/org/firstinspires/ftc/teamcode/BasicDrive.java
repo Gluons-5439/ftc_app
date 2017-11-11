@@ -55,17 +55,19 @@ public class BasicDrive extends LinearOpMode {
             //Three linear variables intersecting non-linearly for mecanum drive
 
 
-            while(gamepad2.x)  {
+            if(gamepad2.x)  {
                 robot.bottomClaw.setPosition(1);
-            }
-            while(gamepad2.y)   {
+            }else if(gamepad2.y)   {
                 robot.bottomClaw.setPosition(-1);
+            }else{
+                robot.bottomClaw.setPosition(0);
             }
-            while(gamepad2.b)  {
+            if(gamepad2.b)  {
                 robot.topClaw.setPosition(1);
-            }
-            while(gamepad2.a)   {
+            }else if(gamepad2.a)   {
                 robot.topClaw.setPosition(-1);
+            }else{
+                robot.topClaw.setPosition(0);
             }
             //preset positions for servo go up and down
             /**      int servoPosition = 0;
