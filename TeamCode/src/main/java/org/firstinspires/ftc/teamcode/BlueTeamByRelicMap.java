@@ -39,7 +39,7 @@ public class BlueTeamByRelicMap extends LinearOpMode {
 
         relicTrackables.activate();
 
-        int column = null;
+        int column = 1;
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
         if(vuMark != RelicRecoveryVuMark.UNKNOWN){
             if(vuMark == RelicRecoveryVuMark.LEFT){
