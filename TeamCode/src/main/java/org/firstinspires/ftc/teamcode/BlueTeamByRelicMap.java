@@ -6,6 +6,7 @@ import com.qualcomm.hardware.modernrobotics.*;
 import com.qualcomm.robotcore.util.*;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
@@ -37,6 +38,21 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         waitForStart();
 
         relicTrackables.activate();
+
+        int column = null;
+        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+        if(vuMark != RelicRecoveryVuMark.UNKNOWN){
+            if(vuMark == RelicRecoveryVuMark.LEFT){
+                column = 0;
+            }else if(vuMark == RelicRecoveryVuMark.RIGHT){
+                column = 2;
+            }else{
+                column = 1;
+            }
+        }else{
+
+        }
+
 
         robot.jewelExtend.setPosition(.5);
         //vuforia business here for sensing the color of the ball
