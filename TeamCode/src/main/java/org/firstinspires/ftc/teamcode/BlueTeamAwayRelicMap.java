@@ -6,7 +6,6 @@ import com.qualcomm.hardware.modernrobotics.*;
 import com.qualcomm.robotcore.util.*;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
@@ -15,7 +14,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 @com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "BlueTeamByRelic", group = "Autonomous")
 
 
-public class BlueTeamByRelicMap extends LinearOpMode {
+public class BlueTeamAwayRelicMap extends LinearOpMode {
     Hardware robot = new Hardware();
 
     VuforiaLocalizer vuforia;
@@ -37,26 +36,9 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         robot.init(hardwareMap);
         waitForStart();
 
-        robot.jewelExtend.setPosition(.5);
-
         relicTrackables.activate();
 
-        int column = 1;
-        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-        if(vuMark != RelicRecoveryVuMark.UNKNOWN){
-            if(vuMark == RelicRecoveryVuMark.LEFT){
-                column = 0;
-            }else if(vuMark == RelicRecoveryVuMark.RIGHT){
-                column = 2;
-            }else{
-                column = 1;
-            }
-        }else{
-
-        }
-
-
-
+        robot.jewelExtend.setPosition(.5);
         //vuforia business here for sensing the color of the ball
         goLeft();
         Thread.sleep(2000);

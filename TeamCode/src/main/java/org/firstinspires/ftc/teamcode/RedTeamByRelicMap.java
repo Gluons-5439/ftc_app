@@ -76,9 +76,10 @@ public class RedTeamByRelicMap extends LinearOpMode {
         double forward = 0;
         double right = 0;
 
-        degree = Math.toDegrees(Math.sin(degree)*power);
-        right = Math.toRadians()
-        forward =
+        double rightDegree = Math.toDegrees(Math.sin(degree)*power);
+        double forwardDegree = Math.toDegrees(Math.cos(degree)*power);
+        right = Math.toRadians(degree);
+        forward = Math.toRadians(degree);
 
 
             //clockwise *= -0.5;
