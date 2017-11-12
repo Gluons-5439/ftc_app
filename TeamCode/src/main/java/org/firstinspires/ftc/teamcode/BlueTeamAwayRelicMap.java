@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "BlueTeamByRelic", group = "Autonomous")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "BlueTeamAwayRelic", group = "Autonomous")
 
 
 public class BlueTeamAwayRelicMap extends LinearOpMode {

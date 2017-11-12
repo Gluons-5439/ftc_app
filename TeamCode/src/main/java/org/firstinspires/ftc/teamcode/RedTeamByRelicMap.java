@@ -6,7 +6,7 @@ import com.qualcomm.hardware.modernrobotics.*;
 import com.qualcomm.robotcore.util.*;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "CompetitionAuto", group = "Autonomous")
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "RedTeamByRelic", group = "Autonomous")
 
 
 public class RedTeamByRelicMap extends LinearOpMode {
