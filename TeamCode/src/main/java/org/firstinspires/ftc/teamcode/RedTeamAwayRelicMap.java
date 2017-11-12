@@ -38,6 +38,8 @@ public class RedTeamAwayRelicMap extends LinearOpMode {
 
         relicTrackables.activate();
 
+        //24" LEFT, 12" BACKWARD
+
         robot.jewelExtend.setPosition(.5);
         //vuforia business here for sensing the color of the ball
         goLeft();

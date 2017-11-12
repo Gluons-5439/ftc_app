@@ -37,48 +37,54 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         robot.init(hardwareMap);
         waitForStart();
 
-        robot.jewelExtend.setPosition(.5);
 
-        relicTrackables.activate();
+
+     //   relicTrackables.activate();
         //activate balls here
-        int column = 1;
-        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
-        if(vuMark != RelicRecoveryVuMark.UNKNOWN){
-            if(vuMark == RelicRecoveryVuMark.LEFT){
-                column = 0;
-            }else if(vuMark == RelicRecoveryVuMark.RIGHT){
-                column = 2;
-            }else{
-                column = 1;
-            }
-        }
+     //  int column = 1;
+    //    RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+    //    if(vuMark != RelicRecoveryVuMark.UNKNOWN){
+    //        if(vuMark == RelicRecoveryVuMark.LEFT){
+    //            column = 0;
+    //        }else if(vuMark == RelicRecoveryVuMark.RIGHT){
+    //            column = 2;
+    //        }else{
+    //            column = 1;
+    //        }
+    //    }
 
 
+        // 36" RIGHT
 
-        //vuforia business here for sensing the color of the ball
+        //NOTE ALL NUMBERS ARE THEORETICAL... ONCE TESTING IS COMPLETED THESE NUMBERS WILL BE FINALIZED
         robot.initialPulleyRaiser.setPower(1);  //lifts baby clips to clip onto sides
-        Thread.sleep(100);
+        Thread.sleep(250);
         robot.initialPulleyRaiser.setPower(0);  //stops clips and platform drops
-        robot.bottomClaw.setPosition(0);  //grips the block infront
-
-        goRight();  //moves to jewel
-        Thread.sleep(1000);
+        robot.bottomClaw.setPosition(0);  //transformer claw
+        robot.topClaw.setPosition(0); //transformer claw
+        goRight(); //Switch depending on where jewelExtend is
+        Thread.sleep(200);
+        goStop();
+        robot.jewelExtend.setPosition(.5);
+        //vuforia business here for sensing the color of the ball
         robot.jewelExtend.setPosition(0);
+        goRight();
+        Thread.sleep(2000);
         //if then statement to turn left/right and back to pop off jewel
-        if(column == 0) {
-            Thread.sleep(1000);
-        }else if (column == 1) {
-            Thread.sleep(1100);
-        }else {
-            Thread.sleep(1200);
-        }
+    //    if(column == 0) {
+     //       Thread.sleep(1000);
+    //    }else if (column == 1) {
+     //       Thread.sleep(1100);
+    //    }else {
+    //        Thread.sleep(1200);
+    //    }
 
-        goForward();
-        Thread.sleep(100);
-        robot.bottomClaw.setPosition(.5);
-        Thread.sleep(100);
-        goBackward();
-        Thread.sleep(100);
+      //  goForward();
+     //   Thread.sleep(100);
+     //   robot.bottomClaw.setPosition(.5);
+     //   Thread.sleep(100);
+     //   goBackward();
+     //   Thread.sleep(100);
         goStop();
 
 
@@ -99,6 +105,7 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         robot.frontRightMotor.setPower(1);
         robot.backLeftMotor.setPower(1);
         robot.backRightMotor.setPower(1);
+
     }
 
     public void goBackward() {
@@ -107,6 +114,7 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         robot.frontRightMotor.setPower(-1);
         robot.backLeftMotor.setPower(-1);
         robot.backRightMotor.setPower(-1);
+
 
     }
 

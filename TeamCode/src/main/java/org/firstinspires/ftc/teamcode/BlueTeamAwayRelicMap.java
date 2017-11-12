@@ -33,6 +33,8 @@ public class BlueTeamAwayRelicMap extends LinearOpMode {
         VuforiaTrackable relicTemplate = relicTrackables.get(0);
         relicTemplate.setName("relicVuMarkTemplate"); // can help in debugging; otherwise not necessary
 
+        //24" RIGHT 12" BACKWARDS
+
         robot.init(hardwareMap);
         waitForStart();
 

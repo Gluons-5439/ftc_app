@@ -15,16 +15,27 @@ public class RedTeamByRelicMap extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
         waitForStart();
+
+        // 36" RIGHT
+
+// ALL TIMES ARE THEORETICAL!! NEED TESTING FIRST!
+
+        goRight(); // depending on which side the claw is this MUST be adjusted
+        Thread.sleep(250);
+        goStop();
         robot.jewelExtend.setPosition(.5);
+
         //vuforia business here for sensing the color of the ball
-        goRight();
+        //strafe direction depending on ball
+        robot.jewelExtend.setPosition(0);
+        goLeft();
         Thread.sleep(2000);
-        goForward();
-        Thread.sleep(100);
+        //goForward();
+        //Thread.sleep(100);
         //let go of claw to place block
-        Thread.sleep(100);
-        goBackward();
-        Thread.sleep(100);
+        //Thread.sleep(100);
+        //goBackward();
+        //Thread.sleep(100);
         goStop();
 
 
