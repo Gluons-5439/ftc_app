@@ -26,12 +26,11 @@ public class Hardware{
     DcMotor liftMotorRight = null;
     DcMotor initialPulleyRaiser = null;
 
-    Servo leftLift = null;
-    Servo rightLift = null;
+
     Servo bottomClaw = null;
     Servo topClaw = null;
     Servo jewelExtend = null;
-    Servo clawRaiser = null;
+
 
 
 
@@ -70,12 +69,11 @@ public class Hardware{
         liftMotorRight = hwMap.dcMotor.get("liftMotorRight");
         initialPulleyRaiser = hwMap.dcMotor.get("initialPulleyRaiser");
 
-        leftLift = hwMap.servo.get("leftLift");
-        rightLift = hwMap.servo.get("rightLift");
+
         bottomClaw = hwMap.servo.get("bottomClaw");
         topClaw = hwMap.servo.get("topClaw");
         jewelExtend = hwMap.servo.get("jewelExtend");
-        clawRaiser = hwMap.servo.get("clawRaiser");
+
     }
 
 
@@ -107,12 +105,11 @@ public class Hardware{
         liftMotorRight.setPower(0);
         initialPulleyRaiser.setPower(0);
 
-        leftLift.setPosition(0);
-        rightLift.setPosition(0);
+
         bottomClaw.setPosition(0);
         topClaw.setPosition(0);
         jewelExtend.setPosition(0);
-        clawRaiser.setPosition(0);
+
     }
 
 

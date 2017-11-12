@@ -40,7 +40,7 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         robot.jewelExtend.setPosition(.5);
 
         relicTrackables.activate();
-
+        //activate balls here
         int column = 1;
         RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
         if(vuMark != RelicRecoveryVuMark.UNKNOWN){
@@ -51,18 +51,31 @@ public class BlueTeamByRelicMap extends LinearOpMode {
             }else{
                 column = 1;
             }
-        }else{
-
         }
 
 
 
         //vuforia business here for sensing the color of the ball
-        goLeft();
-        Thread.sleep(2000);
+        robot.initialPulleyRaiser.setPower(1);  //lifts baby clips to clip onto sides
+        Thread.sleep(100);
+        robot.initialPulleyRaiser.setPower(0);  //stops clips and platform drops
+        robot.bottomClaw.setPosition(0);  //grips the block infront
+
+        goRight();  //moves to jewel
+        Thread.sleep(1000);
+        robot.jewelExtend.setPosition(0);
+        //if then statement to turn left/right and back to pop off jewel
+        if(column == 0) {
+            Thread.sleep(1000);
+        }else if (column == 1) {
+            Thread.sleep(1100);
+        }else {
+            Thread.sleep(1200);
+        }
+
         goForward();
         Thread.sleep(100);
-        //let go of claw to place block
+        robot.bottomClaw.setPosition(.5);
         Thread.sleep(100);
         goBackward();
         Thread.sleep(100);
