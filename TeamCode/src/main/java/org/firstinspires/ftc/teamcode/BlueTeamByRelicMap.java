@@ -57,11 +57,16 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         // 36" RIGHT
 
         //NOTE ALL NUMBERS ARE THEORETICAL... ONCE TESTING IS COMPLETED THESE NUMBERS WILL BE FINALIZED
-        robot.initialPulleyRaiser.setPower(1);  //lifts baby clips to clip onto sides
-        Thread.sleep(250);
+        robot.initialPulleyRaiser.setPower(.75);  //lifts baby clips to clip onto sides
+        robot.liftMotorRight.setPower(-.5);
+        robot.liftMotorLeft.setPower(-.5); //Lowers platform as pulleys raise so it doesnt get stuck up top
+        Thread.sleep(5);
+        robot.bottomClaw.setPosition(0);
+        robot.topClaw.setPosition(0); //gets claws out of the way
+        Thread.sleep(245);
         robot.initialPulleyRaiser.setPower(0);  //stops clips and platform drops
-        robot.bottomClaw.setPosition(0);  //transformer claw
-        robot.topClaw.setPosition(0); //transformer claw
+        //ROBOT SHOULD BE FULLY EXPANDED AT THIS POINT
+
         goRight(); //Switch depending on where jewelExtend is
         Thread.sleep(200);
         goStop();
