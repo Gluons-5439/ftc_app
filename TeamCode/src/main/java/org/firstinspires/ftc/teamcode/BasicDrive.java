@@ -107,7 +107,7 @@ public class BasicDrive extends LinearOpMode {
 
              }
              **/
-            float padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
+            double padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
             //Deadzone for lift motors
             robot.liftMotorLeft.setPower(padTwoLeftY);
             robot.liftMotorRight.setPower(padTwoLeftY);
