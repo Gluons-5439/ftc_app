@@ -84,7 +84,7 @@ public class Hardware{
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         liftMotorLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         liftMotorRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        initialPulleyRaiser.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        initialPulleyRaiser.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         frontRightMotor.setDirection(DcMotor.Direction.REVERSE); // reversed
