@@ -11,21 +11,28 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "RedTeamAwayRelic", group = "Autonomous")
-
+//@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "RedTeamAwayRelic", group = "Autonomous")
 
 public class RedTeamAwayRelicMap extends LinearOpMode {
     Hardware robot = new Hardware();
-    AutonomousTools t = new AutonomousTools(robot);
+
     VuforiaLocalizer vuforia;
     VuforiaTrackables relicTrackables = null;
     VuforiaTrackable relicTemplate = null;
-    public void runOpMode() throws InterruptedException {
-        t.initVuforia(vuforia, hardwareMap, relicTrackables, relicTemplate);
+    public void runOpMode() throws InterruptedException{
+//        t.initVuforia(vuforia, hardwareMap, relicTrackables, relicTemplate);
 
         robot.init(hardwareMap);
         waitForStart();
 
+        AutonomousTools t = new AutonomousTools(robot);
+
+
+        t.goForward(0.5);
+        sleep(2000);
+        t.goStop();
+
+        /*
         t.initPulleyRaiser();
 
 
@@ -45,7 +52,7 @@ public class RedTeamAwayRelicMap extends LinearOpMode {
         Thread.sleep(100);
         t.goStop();
 
-
+        */
         //Need to first put jewel servo down between balls to sense it. Then turn right/left depending on which one and back, go forward and place block into cryptobox
 
     }

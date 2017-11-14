@@ -12,7 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "BlueTeamByRelic", group = "Autonomous")
+//@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "BlueTeamByRelic", group = "Autonomous")
 
 
 public class BlueTeamByRelicMap extends LinearOpMode {
@@ -22,13 +22,15 @@ public class BlueTeamByRelicMap extends LinearOpMode {
     VuforiaTrackables relicTrackables = null;
     VuforiaTrackable relicTemplate = null;
     public void runOpMode() throws InterruptedException {
-        t.initVuforia(vuforia, hardwareMap, relicTrackables, relicTemplate);
+      //  t.initVuforia(vuforia, hardwareMap, relicTrackables, relicTemplate);
 
         robot.init(hardwareMap);
         waitForStart();
 
-
-
+        t.goForward(0.5);
+        sleep(2000);
+        t.goStop();
+        /*
         relicTrackables.activate();
 
        int column = 1;
@@ -49,7 +51,7 @@ public class BlueTeamByRelicMap extends LinearOpMode {
 
         t.initPulleyRaiser();
 
-
+        double pow = 0.5;
 
         robot.liftMotorRight.setPower(-.5);
         robot.liftMotorLeft.setPower(-.5); //Lowers platform as pulleys raise so it doesnt get stuck up top
@@ -60,13 +62,13 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         robot.initialPulleyRaiser.setPower(0);  //stops clips and platform drops
         //ROBOT SHOULD BE FULLY EXPANDED AT THIS POINT
 
-        t.goRight(); //Switch depending on where jewelExtend is
+        t.goRight(pow); //Switch depending on where jewelExtend is
         Thread.sleep(200);
         t.goStop();
         robot.jewelExtend.setPosition(.5);
         //vuforia business here for sensing the color of the ball
         robot.jewelExtend.setPosition(0);
-        t.goRight();
+        t.goRight(0.5);
         Thread.sleep(2000);
         //if then statement to turn left/right and back to pop off jewel
     //    if(column == 0) {
@@ -87,6 +89,6 @@ public class BlueTeamByRelicMap extends LinearOpMode {
 
 
         //Need to first put jewel servo down between balls to sense it. Then turn right/left depending on which one and back, go forward and place block into cryptobox
-
+    */
     }
 }

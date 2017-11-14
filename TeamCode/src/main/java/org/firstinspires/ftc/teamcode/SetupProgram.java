@@ -10,6 +10,8 @@ import com.qualcomm.robotcore.util.Range;
 public class SetupProgram extends LinearOpMode {
     Hardware robot = new Hardware();
 
+    double factor = 2;
+
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
         //Upon initialization maps robot hardware
@@ -39,8 +41,10 @@ public class SetupProgram extends LinearOpMode {
                 robot.topClaw.setPower(0);
             }
             */
-            double padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
-            double padTwoRightY = Math.abs(gamepad2.right_stick_y)>0.2 ? -gamepad2.right_stick_y : 0;
+
+            factor = gamepad2.right_bumper ? 1 : 2;
+            double padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y/factor : 0;
+            double padTwoRightY = Math.abs(gamepad2.right_stick_y)>0.2 ? -gamepad2.right_stick_y/factor : 0;
             //Deadzone for lift motors
             robot.liftMotorLeft.setPower(padTwoLeftY);
             robot.liftMotorRight.setPower(padTwoLeftY);

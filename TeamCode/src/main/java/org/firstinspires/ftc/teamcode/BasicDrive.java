@@ -76,14 +76,22 @@ public class BasicDrive extends LinearOpMode {
 
              telemetry.update();
 
-            double padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
-            double padTwoRightY = Math.abs(gamepad2.right_stick_y)>0.2 ? -gamepad2.right_stick_y : 0;
+            double padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? Range.clip(-gamepad2.left_stick_y, -0.65, 0.65) : 0;
+            robot.liftMotorLeft.setPower(padTwoLeftY);
+            robot.liftMotorRight.setPower(padTwoLeftY);
+
+
+
+
+
+
+            double padTwoRightY = Math.abs(gamepad2.right_stick_y)>0.2 ? -gamepad2.right_stick_y/2 : 0;
             //Deadzone for lift motors
             robot.liftMotorLeft.setPower(padTwoLeftY);
             robot.liftMotorRight.setPower(padTwoLeftY);
 
             double trigger = Math.abs(gamepad2.left_trigger)>0.4 ? -gamepad2.left_trigger/1.5 : 0;
-            robot.initialPulleyRaiser.setPower(trigger);
+            robot.initialPulleyRaiser.setPower(padTwoRightY);
 
 //            robot.bottomClaw.setPower(padTwoRightY);
             //Sets power for motors raising and lowering pulley equal to gamepad2 left stick

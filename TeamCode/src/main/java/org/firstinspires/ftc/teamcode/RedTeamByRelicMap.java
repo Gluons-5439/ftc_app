@@ -6,7 +6,7 @@ import com.qualcomm.hardware.modernrobotics.*;
 import com.qualcomm.robotcore.util.*;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "RedTeamByRelic", group = "Autonomous")
+//@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name = "RedTeamByRelic", group = "Autonomous")
 
 
 public class RedTeamByRelicMap extends LinearOpMode {
@@ -17,8 +17,12 @@ public class RedTeamByRelicMap extends LinearOpMode {
         robot.init(hardwareMap);
         waitForStart();
 
-        // 36" RIGHT
+        t.goForward(0.5);
+        sleep(2000);
+        t.goStop();
 
+        // 36" RIGHT
+/*
 // ALL TIMES ARE THEORETICAL!! NEED TESTING FIRST!
 
         t.goRight(); // depending on which side the claw is this MUST be adjusted
@@ -41,7 +45,7 @@ public class RedTeamByRelicMap extends LinearOpMode {
 
 
         //Need to first put jewel servo down between balls to sense it. Then turn right/left depending on which one and back, go forward and place block into cryptobox
-
+*/
     }
 
 }

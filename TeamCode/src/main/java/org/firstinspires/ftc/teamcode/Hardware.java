@@ -44,7 +44,7 @@ public class Hardware{
     }
 
 
-    public void init(HardwareMap ahwMap) throws InterruptedException{
+    public void init(HardwareMap ahwMap) {
         hwMap = ahwMap;
 
         InitComponents();
@@ -128,4 +128,5 @@ public class Hardware{
 
         period.reset();
     }
+
 }
