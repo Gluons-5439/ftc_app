@@ -54,10 +54,15 @@ public class AutonomousTools {
     }
     public void initPulleyRaiser() throws InterruptedException{
         //NOTE ALL NUMBERS ARE (slightly less) THEORETICAL... ONCE TESTING IS COMPLETED THESE NUMBERS WILL BE FINALIZED
-        robot.initialPulleyRaiser.setPower(.75);  //lifts baby clips to clip onto sides
+        robot.initialPulleyRaiser.setPower(0.5);  //lifts baby clips to clip onto sides
+        robot.liftMotorLeft.setPower(-0.5);
+        robot.liftMotorRight.setPower(-0.5);
         while(robot.initialPulleyRaiser.getCurrentPosition() < 357){ Thread.sleep(40); } //Counts encoder values travels 9'' (9/C)*280
         robot.initialPulleyRaiser.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         robot.initialPulleyRaiser.setPower(0);
+        robot.liftMotorRight.setPower(0);
+        robot.liftMotorLeft.setPower(0);
+        robot.bottomClaw.setPower(0.5);
     }
     public void goStop()  {
         robot.frontLeftMotor.setPower(0);

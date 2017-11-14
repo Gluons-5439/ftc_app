@@ -54,8 +54,8 @@ public class BlueTeamByRelicMap extends LinearOpMode {
         robot.liftMotorRight.setPower(-.5);
         robot.liftMotorLeft.setPower(-.5); //Lowers platform as pulleys raise so it doesnt get stuck up top
         Thread.sleep(5);
-        robot.bottomClaw.setPosition(0);
-        robot.topClaw.setPosition(0); //gets claws out of the way
+//        robot.bottomClaw.
+//        robot.topClaw.setPosition(0); //gets claws out of the way
         Thread.sleep(245);
         robot.initialPulleyRaiser.setPower(0);  //stops clips and platform drops
         //ROBOT SHOULD BE FULLY EXPANDED AT THIS POINT

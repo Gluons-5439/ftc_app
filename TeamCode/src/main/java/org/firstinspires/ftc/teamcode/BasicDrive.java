@@ -30,6 +30,8 @@ public class BasicDrive extends LinearOpMode {
         gyro.resetZAxisIntegrator();
 
 
+        double bottomBack = 0.55;
+
         while (opModeIsActive()) {
             double theta = gyro.getHeading();
             //Creates variable theta which equals robot heading
@@ -55,19 +57,27 @@ public class BasicDrive extends LinearOpMode {
             //Three linear variables intersecting non-linearly for mecanum drive
 
 
+
             if(gamepad2.x)  {
-                robot.bottomClaw.setPosition(1);
+                robot.bottomClaw.setPower(bottomBack);
             }else if(gamepad2.y)   {
-                robot.bottomClaw.setPosition(-1);
+                robot.bottomClaw.setPower(0.25);
             }else{
-                robot.bottomClaw.setPosition(0);
+                robot.bottomClaw.setPower(0.5);
             }
+
+            if(gamepad2.dpad_up){
+                bottomBack -= 0.001;
+            }else if(gamepad2.dpad_down){
+                bottomBack += 0.001;
+            }
+
             if(gamepad2.b)  {
-                robot.topClaw.setPosition(1);
+                robot.topClaw.setPower(1.0);
             }else if(gamepad2.a)   {
-                robot.topClaw.setPosition(-1);
+                robot.topClaw.setPower(-1.0);
             }else{
-                robot.topClaw.setPosition(0);
+                robot.topClaw.setPower(0);
             }
             //preset positions for servo go up and down
             /*      int servoPosition = 0;
@@ -113,10 +123,13 @@ public class BasicDrive extends LinearOpMode {
             robot.liftMotorLeft.setPower(padTwoLeftY);
             robot.liftMotorRight.setPower(padTwoLeftY);
             robot.initialPulleyRaiser.setPower(padTwoRightY);
+//            robot.bottomClaw.setPower(padTwoRightY);
             //Sets power for motors raising and lowering pulley equal to gamepad2 left stick
+            telemetry.addData("Left:", robot.liftMotorLeft.getPower());
+            telemetry.addData("Right: ", robot.liftMotorRight.getPower());
 
             telemetry.addData("Heading of Gyro:", theta);
-            telemetry.addData("Servo Claw:", robot.bottomClaw.getPosition());
+            telemetry.addData("Servo Claw:", robot.bottomClaw.getPower());
 
             telemetry.update();
             //Adds gyro heading to telemetry
