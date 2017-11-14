@@ -42,87 +42,49 @@ public class BasicDrive extends LinearOpMode {
             double clockwise = Math.abs(gamepad1.right_stick_x)>0.1 ? gamepad1.right_stick_x:0;
             //Variables to set values based on controller input, 0.1 is deadzone
 
-            double temp = forward*Math.cos(Math.toRadians(theta)) - right*Math.sin(Math.toRadians(theta));
-            right = forward*Math.sin(theta) + right*Math.cos((theta));
-            forward = temp;
+//            double temp = forward*Math.cos(Math.toRadians(theta)) - right*Math.sin(Math.toRadians(theta));
+//            right = forward*Math.sin(theta) + right*Math.cos((theta));
+//            forward = temp;
             //Math for drive relative to theta
 
             clockwise *= -0.5;
             //Sets speed when rotating, still needs work
 
             robot.frontLeftMotor.setPower(Range.clip(forward+clockwise+right,-1,1));
-            robot.backLeftMotor.setPower(Range.clip(forward+clockwise-right,-1,1));
+            robot.backLeftMotor.setPower(Range.clip(-forward+clockwise-right,-1,1));
             robot.frontRightMotor.setPower(Range.clip(forward-clockwise-right,-1,1));
-            robot.backRightMotor.setPower(Range.clip(forward-clockwise+right,-1,1));
+            robot.backRightMotor.setPower(Range.clip(-forward-clockwise+right,-1,1));
             //Three linear variables intersecting non-linearly for mecanum drive
 
 
 
-            if(gamepad2.x)  {
-                robot.bottomClaw.setPower(bottomBack);
-            }else if(gamepad2.y)   {
+            if(gamepad2.a)  {
+                robot.bottomClaw.setPower(0.5);
+            }else if(gamepad2.b)   {
                 robot.bottomClaw.setPower(0.25);
             }else{
-                robot.bottomClaw.setPower(0.5);
+//                robot.bottomClaw.setPower(0.5);
             }
 
-            if(gamepad2.dpad_up){
-                bottomBack -= 0.001;
-            }else if(gamepad2.dpad_down){
-                bottomBack += 0.001;
-            }
-
-            if(gamepad2.b)  {
-                robot.topClaw.setPower(1.0);
-            }else if(gamepad2.a)   {
-                robot.topClaw.setPower(-1.0);
+            if(gamepad2.x)  {
+                robot.topClaw.setPower(0.5);
+            }else if(gamepad2.y)   {
+                robot.topClaw.setPower(0.25);
             }else{
-                robot.topClaw.setPower(0);
+//                robot.topClaw.setPower(0.5);
             }
-            //preset positions for servo go up and down
-            /*      int servoPosition = 0;
-             if(gamepad1.a)
-             {
-             servoPosition++;
-             }
-             if(gamepad1.b)
-             {
-             servoPosition--;
-             }
-             switch(servoPosition)
-             {
-             case 0:
-             robot.leftLift.setPosition(0);
-             robot.rightLift.setPosition(0);
-             break;
-             case 1:
-             robot.leftLift.setPosition(.25);
-             robot.rightLift.setPosition(.25);
-             break;
-             case 2:
-             robot.leftLift.setPosition(.5);
-             robot.rightLift.setPosition(.5);
-             break;
-             case 3:
-             robot.leftLift.setPosition(.75);
-             robot.rightLift.setPosition(.75);
-             break;
-             case 4:
-             robot.leftLift.setPosition(1);
-             robot.rightLift.setPosition(1);
-             break;
-             default:
-             telemetry.addData("Servo can't go that high/low! Take the L");
+
              telemetry.update();
 
-             }
-             **/
             double padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
             double padTwoRightY = Math.abs(gamepad2.right_stick_y)>0.2 ? -gamepad2.right_stick_y : 0;
             //Deadzone for lift motors
             robot.liftMotorLeft.setPower(padTwoLeftY);
             robot.liftMotorRight.setPower(padTwoLeftY);
-            robot.initialPulleyRaiser.setPower(padTwoRightY);
+
+            double trigger = Math.abs(gamepad2.left_trigger)>0.4 ? -gamepad2.left_trigger/1.5 : 0;
+            robot.initialPulleyRaiser.setPower(trigger);
+
 //            robot.bottomClaw.setPower(padTwoRightY);
             //Sets power for motors raising and lowering pulley equal to gamepad2 left stick
             telemetry.addData("Left:", robot.liftMotorLeft.getPower());
