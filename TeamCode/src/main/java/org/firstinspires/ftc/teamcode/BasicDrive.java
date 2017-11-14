@@ -70,7 +70,7 @@ public class BasicDrive extends LinearOpMode {
                 robot.topClaw.setPosition(0);
             }
             //preset positions for servo go up and down
-            /**      int servoPosition = 0;
+            /*      int servoPosition = 0;
              if(gamepad1.a)
              {
              servoPosition++;
@@ -108,12 +108,16 @@ public class BasicDrive extends LinearOpMode {
              }
              **/
             double padTwoLeftY = Math.abs(gamepad2.left_stick_y)>0.2 ? -gamepad2.left_stick_y : 0;
+            double padTwoRightY = Math.abs(gamepad2.right_stick_y)>0.2 ? -gamepad2.right_stick_y : 0;
             //Deadzone for lift motors
             robot.liftMotorLeft.setPower(padTwoLeftY);
             robot.liftMotorRight.setPower(padTwoLeftY);
+            robot.initialPulleyRaiser.setPower(padTwoRightY);
             //Sets power for motors raising and lowering pulley equal to gamepad2 left stick
 
             telemetry.addData("Heading of Gyro:", theta);
+            telemetry.addData("Servo Claw:", robot.bottomClaw.getPosition());
+
             telemetry.update();
             //Adds gyro heading to telemetry
 
