@@ -71,36 +71,52 @@ public class AutonomousTools {
         robot.backRightMotor.setPower(0);
     }
 
-    public void goForward() {
+    public void goForward(double p) {
 
-        robot.frontLeftMotor.setPower(1);
-        robot.frontRightMotor.setPower(1);
-        robot.backLeftMotor.setPower(1);
-        robot.backRightMotor.setPower(1);
+        robot.frontLeftMotor.setPower(p);
+        robot.frontRightMotor.setPower(p);
+        robot.backLeftMotor.setPower(p);
+        robot.backRightMotor.setPower(p);
     }
 
-    public void goBackward() {
+    public void goBackward(double p) {
 
-        robot.frontLeftMotor.setPower(-1);
-        robot.frontRightMotor.setPower(-1);
-        robot.backLeftMotor.setPower(-1);
-        robot.backRightMotor.setPower(-1);
-
-    }
-
-    public void goRight() {
-        robot.frontLeftMotor.setPower(-1);
-        robot.frontRightMotor.setPower(1);
-        robot.backLeftMotor.setPower(-1);
-        robot.backRightMotor.setPower(1);
+        robot.frontLeftMotor.setPower(-p);
+        robot.frontRightMotor.setPower(-p);
+        robot.backLeftMotor.setPower(-p);
+        robot.backRightMotor.setPower(-p);
 
     }
 
-    public void goLeft() {
-        robot.frontLeftMotor.setPower(1);
-        robot.frontRightMotor.setPower(-1);
-        robot.backLeftMotor.setPower(1);
-        robot.backRightMotor.setPower(-1);
+    public void goRight(double p) {
+        robot.frontLeftMotor.setPower(-p);
+        robot.frontRightMotor.setPower(p);
+        robot.backLeftMotor.setPower(-p);
+        robot.backRightMotor.setPower(p);
+
+    }
+
+    public void goLeft(double p) {
+        robot.frontLeftMotor.setPower(p);
+        robot.frontRightMotor.setPower(-p);
+        robot.backLeftMotor.setPower(p);
+        robot.backRightMotor.setPower(-p);
+
+    }
+
+    public void goClockwise(double p) {
+        robot.frontLeftMotor.setPower(p);
+        robot.frontRightMotor.setPower(-p);
+        robot.backLeftMotor.setPower(p);
+        robot.backRightMotor.setPower(-p);
+
+    }
+
+    public void goCounterClockwise(double p) {
+        robot.frontLeftMotor.setPower(p);
+        robot.frontRightMotor.setPower(-p);
+        robot.backLeftMotor.setPower(p);
+        robot.backRightMotor.setPower(-p);
 
     }
 
