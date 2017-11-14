@@ -51,9 +51,9 @@ public class BasicDrive extends LinearOpMode {
             //Sets speed when rotating, still needs work
 
             robot.frontLeftMotor.setPower(Range.clip(forward+clockwise+right,-1,1));
-            robot.backLeftMotor.setPower(Range.clip(forward+clockwise-right,-1,1));
+            robot.backLeftMotor.setPower(Range.clip(-forward+clockwise-right,-1,1));
             robot.frontRightMotor.setPower(Range.clip(forward-clockwise-right,-1,1));
-            robot.backRightMotor.setPower(Range.clip(forward-clockwise+right,-1,1));
+            robot.backRightMotor.setPower(Range.clip(-forward-clockwise+right,-1,1));
             //Three linear variables intersecting non-linearly for mecanum drive
 
 

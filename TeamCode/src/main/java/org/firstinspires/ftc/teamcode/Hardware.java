@@ -86,8 +86,8 @@ public class Hardware{
         initialPulleyRaiser.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotor.Direction.REVERSE); // reversed
-        backLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        frontRightMotor.setDirection(DcMotor.Direction.FORWARD); // reversed
+        backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotorLeft.setDirection(DcMotor.Direction.FORWARD);
         liftMotorRight.setDirection(DcMotor.Direction.FORWARD);
