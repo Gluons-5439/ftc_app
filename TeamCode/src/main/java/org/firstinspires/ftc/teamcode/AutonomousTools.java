@@ -117,9 +117,9 @@ public class AutonomousTools {
 
         //clockwise *= -0.5;
         robot.frontLeftMotor.setPower(Range.clip(forward+clockwise+right,-1,1));
-        robot.backLeftMotor.setPower(Range.clip(forward+clockwise-right,-1,1));
+        robot.backLeftMotor.setPower(Range.clip(-forward+clockwise-right,-1,1));
         robot.frontRightMotor.setPower(Range.clip(forward-clockwise-right,-1,1));
-        robot.backRightMotor.setPower(Range.clip(forward-clockwise+right,-1,1));
+        robot.backRightMotor.setPower(Range.clip(-forward-clockwise+right,-1,1));
 
     }
     /*
